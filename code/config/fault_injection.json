@@ -1,0 +1,254 @@
+{
+  "Services": [
+    {
+      "Name": "ui",
+      "Endpoints": [
+        {
+          "Name": "/",
+          "Depends": {
+            "Service": {
+              "Name": "frontend",
+              "Endpoint": "/dispatch"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Name": "frontend",
+      "Endpoints": [
+        {
+          "Name": "/dispatch",
+          "Depends": {
+            "Seq": [
+              {
+                "Service": {
+                  "Name": "customer",
+                  "Endpoint": "/customer"
+                }
+              },
+              {
+                "Service": {
+                  "Name": "driver",
+                  "Endpoint": "/FindNearest"
+                }
+              },
+              {
+                "Par": {
+                  "Items": [
+                    {
+                      "Service": {
+                        "Name": "route",
+                        "Endpoint": "/GetShortestRoute"
+                      }
+                    },
+                    {
+                      "Service": {
+                        "Name": "route",
+                        "Endpoint": "/GetShortestRoute"
+                      }
+                    },
+                    {
+                      "Service": {
+                        "Name": "route",
+                        "Endpoint": "/GetShortestRoute"
+                      }
+                    },
+                    {
+                      "Service": {
+                        "Name": "route",
+                        "Endpoint": "/GetShortestRoute"
+                      }
+                    },
+                    {
+                      "Service": {
+                        "Name": "route",
+                        "Endpoint": "/GetShortestRoute"
+                      }
+                    },
+                    {
+                      "Service": {
+                        "Name": "route",
+                        "Endpoint": "/GetShortestRoute"
+                      }
+                    },
+                    {
+                      "Service": {
+                        "Name": "route",
+                        "Endpoint": "/GetShortestRoute"
+                      }
+                    },
+                    {
+                      "Service": {
+                        "Name": "route",
+                        "Endpoint": "/GetShortestRoute"
+                      }
+                    },
+                    {
+                      "Service": {
+                        "Name": "route",
+                        "Endpoint": "/GetShortestRoute"
+                      }
+                    },
+                    {
+                      "Service": {
+                        "Name": "route",
+                        "Endpoint": "/GetShortestRoute"
+                      }
+                    }
+                  ],
+                  "MaxPar": 3
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "Name": "customer",
+      "Endpoints": [
+        {
+          "Name": "/customer",
+          "Depends": {
+            "Seq": [
+              {
+                "Service": {
+                  "Name": "mysql"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "Name": "driver",
+      "Endpoints": [
+        {
+          "Name": "/FindNearest",
+          "Depends": {
+            "Seq": [
+              {
+                "Service": {
+                  "Name": "redis",
+                  "Endpoint": "/FindDriverIDs"
+                }
+              },
+              {
+                "Service": {
+                  "Name": "redis",
+                  "Endpoint": "/GetDriver"
+                }
+              },
+              {
+                "Service": {
+                  "Name": "redis",
+                  "Endpoint": "/GetDriver"
+                }
+              },
+              {
+                "Service": {
+                  "Name": "redis",
+                  "Endpoint": "/GetDriver"
+                }
+              },
+              {
+                "Service": {
+                  "Name": "redis",
+                  "Endpoint": "/GetDriver"
+                }
+              },
+              {
+                "Service": {
+                  "Name": "redis",
+                  "Endpoint": "/GetDriver"
+                }
+              },
+              {
+                "Service": {
+                  "Name": "redis",
+                  "Endpoint": "/GetDriver"
+                }
+              },
+              {
+                "Service": {
+                  "Name": "redis",
+                  "Endpoint": "/GetDriver"
+                }
+              },
+              {
+                "Service": {
+                  "Name": "redis",
+                  "Endpoint": "/GetDriver"
+                }
+              },
+              {
+                "Service": {
+                  "Name": "redis",
+                  "Endpoint": "/GetDriver"
+                }
+              },
+              {
+                "Service": {
+                  "Name": "redis",
+                  "Endpoint": "/GetDriver"
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "Count": 2
+    },
+    {
+      "Name": "route",
+      "Endpoints": [
+        {
+          "Name": "/GetShortestRoute"
+        }
+      ],
+      "Count": 3
+    },
+    {
+      "Name": "mysql",
+      "Endpoints": [
+        {
+          "Name": "/sql_select",
+          "Perf": {
+            "Failure": {
+              "Probability": 0.2,
+              "Messages": ["db timeout", "db error"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Name": "redis",
+      "Endpoints": [
+        {
+          "Name": "/FindDriverIDs"
+        },
+        {
+          "Name": "/GetDriver",
+          "Perf": {
+            "Latency": null,
+            "Failure": {
+              "Probability": 0.6,
+              "Messages": [
+                "redis timeout",
+                "redis error"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "TestName": "fault-injection",
+  "TestDuration": 30,
+  "TestRunners": 2,
+  "Repeats": 100,
+  "SleepBetweenRequests": 50
+}

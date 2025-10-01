@@ -1,0 +1,33 @@
+{"Services":[{"Name":"ui","Endpoints":[{"Name":"/","Depends":{"Service":{"Name":"frontend","Endpoint":"/dispatch"}}}]},{"Name":"frontend","Endpoints":[{"Name":"/dispatch","Depends":{"Seq":[{"Service":{"Name":"customer","Endpoint":"/customer"}},{"Service":{"Name":"driver","Endpoint":"/FindNearest"}},{"Par":{"Items":[{"Service":{"Name":"route","Endpoint":"/GetShortestRoute"}},{"Service":{"Name":"route","Endpoint":"/GetShortestRoute"}},{"Service":{"Name":"route","Endpoint":"/GetShortestRoute"}},{"Service":{"Name":"route","Endpoint":"/GetShortestRoute"}},{"Service":{"Name":"route","Endpoint":"/GetShortestRoute"}},{"Service":{"Name":"route","Endpoint":"/GetShortestRoute"}},{"Service":{"Name":"route","Endpoint":"/GetShortestRoute"}},{"Service":{"Name":"route","Endpoint":"/GetShortestRoute"}},{"Service":{"Name":"route","Endpoint":"/GetShortestRoute"}},{"Service":{"Name":"route","Endpoint":"/GetShortestRoute"}}],"MaxPar":3}}]}}]},{"Name":"customer","Endpoints":[{"Name":"/customer","Depends":{"Seq":[{"Service":{"Name":"mysql"}}]}}]},{"Name":"driver","Endpoints":[{"Name":"/FindNearest","Depends":{"Seq":[{"Service":{"Name":"redis","Endpoint":"/FindDriverIDs"}},{"Service":{"Name":"redis","Endpoint":"/GetDriver"}},{"Service":{"Name":"redis","Endpoint":"/GetDriver"}},{"Service":{"Name":"redis","Endpoint":"/GetDriver"}},{"Service":{"Name":"redis","Endpoint":"/GetDriver"}},{"Service":{"Name":"redis","Endpoint":"/GetDriver"}},{"Service":{"Name":"redis","Endpoint":"/GetDriver"}},{"Service":{"Name":"redis","Endpoint":"/GetDriver"}},{"Service":{"Name":"redis","Endpoint":"/GetDriver"}},{"Service":{"Name":"redis","Endpoint":"/GetDriver"}},{"Service":{"Name":"redis","Endpoint":"/GetDriver"}}]}}],"Count":2},{"Name":"route","Endpoints":[{"Name":"/GetShortestRoute"}],"Count":3},{"Name":"mysql","Endpoints":[{"Name":"/sql_select","Perf":{"Latency":null,"Failure":{"Probability":0.2,"Messages":["db timeout","db error"]}}}]},{"Name":"redis","Endpoints":[{"Name":"/FindDriverIDs"},{"Name":"/GetDriver","Perf":{"Latency":null,"Failure":{"Probability":0.6,"Messages":["redis timeout","redis error"]}}}]}],"TestName":"fault-injection","TestDuration":30,"TestRunners":2,"Repeats":100,"SleepBetweenRequests":50}
+validating endpoint/
+validating endpoint/dispatch
+validating endpoint/customer
+validating endpoint/FindNearest
+validating endpoint/GetShortestRoute
+validating endpoint/sql_select
+validating endpoint/FindDriverIDs
+validating endpoint/GetDriver
+2025/09/30 15:47:10 started service instance ui-0 at http://127.0.0.1:34001
+2025/09/30 15:47:10 started service instance frontend-0 at http://127.0.0.1:40859
+2025/09/30 15:47:10 started service instance customer-0 at http://127.0.0.1:33305
+2025/09/30 15:47:10 started service instance driver-0 at http://127.0.0.1:37191
+2025/09/30 15:47:10 started service instance driver-1 at http://127.0.0.1:40469
+2025/09/30 15:47:10 started service instance route-0 at http://127.0.0.1:40213
+2025/09/30 15:47:10 started service instance route-1 at http://127.0.0.1:42919
+2025/09/30 15:47:10 started service instance route-2 at http://127.0.0.1:41619
+2025/09/30 15:47:10 started service instance mysql-0 at http://127.0.0.1:33337
+2025/09/30 15:47:10 started service instance redis-0 at http://127.0.0.1:36149
+2025/09/30 15:47:10 services started
+2025/09/30 15:47:13 started 2 test executors
+2025/09/30 15:47:13 running 100 repeat(s)
+2025/09/30 15:47:13 waiting for test executors to exit
+2025/09/30 15:47:25 stopped service instance ui
+2025/09/30 15:47:25 stopped service instance frontend
+2025/09/30 15:47:25 stopped service instance customer
+2025/09/30 15:47:25 stopped service instance driver
+2025/09/30 15:47:25 stopped service instance driver
+2025/09/30 15:47:25 stopped service instance route
+2025/09/30 15:47:25 stopped service instance route
+2025/09/30 15:47:25 stopped service instance route
+2025/09/30 15:47:25 stopped service instance mysql
+2025/09/30 15:47:25 stopped service instance redis

@@ -1,0 +1,33 @@
+validating endpoint/
+validating endpoint/dispatch
+validating endpoint/customer
+validating endpoint/FindNearest
+validating endpoint/GetShortestRoute
+validating endpoint/sql_select
+validating endpoint/FindDriverIDs
+validating endpoint/GetDriver
+{"Services":[{"Name":"ui","Endpoints":[{"Name":"/","Depends":{"Service":{"Name":"frontend","Endpoint":"/dispatch"}}}]},{"Name":"frontend","Endpoints":[{"Name":"/dispatch","Depends":{"Seq":[{"Service":{"Name":"customer","Endpoint":"/customer"}},{"Service":{"Name":"driver","Endpoint":"/FindNearest"}},{"Par":{"Items":[{"Service":{"Name":"route","Endpoint":"/GetShortestRoute"}},{"Service":{"Name":"route","Endpoint":"/GetShortestRoute"}},{"Service":{"Name":"route","Endpoint":"/GetShortestRoute"}},{"Service":{"Name":"route","Endpoint":"/GetShortestRoute"}},{"Service":{"Name":"route","Endpoint":"/GetShortestRoute"}},{"Service":{"Name":"route","Endpoint":"/GetShortestRoute"}},{"Service":{"Name":"route","Endpoint":"/GetShortestRoute"}},{"Service":{"Name":"route","Endpoint":"/GetShortestRoute"}},{"Service":{"Name":"route","Endpoint":"/GetShortestRoute"}},{"Service":{"Name":"route","Endpoint":"/GetShortestRoute"}}],"MaxPar":3}}]}}]},{"Name":"customer","Endpoints":[{"Name":"/customer","Depends":{"Seq":[{"Service":{"Name":"mysql"}}]}}]},{"Name":"driver","Endpoints":[{"Name":"/FindNearest","Depends":{"Seq":[{"Service":{"Name":"redis","Endpoint":"/FindDriverIDs"}},{"Service":{"Name":"redis","Endpoint":"/GetDriver"}},{"Service":{"Name":"redis","Endpoint":"/GetDriver"}},{"Service":{"Name":"redis","Endpoint":"/GetDriver"}},{"Service":{"Name":"redis","Endpoint":"/GetDriver"}},{"Service":{"Name":"redis","Endpoint":"/GetDriver"}},{"Service":{"Name":"redis","Endpoint":"/GetDriver"}},{"Service":{"Name":"redis","Endpoint":"/GetDriver"}},{"Service":{"Name":"redis","Endpoint":"/GetDriver"}},{"Service":{"Name":"redis","Endpoint":"/GetDriver"}},{"Service":{"Name":"redis","Endpoint":"/GetDriver"}}]}}],"Count":2},{"Name":"route","Endpoints":[{"Name":"/GetShortestRoute"}],"Count":3},{"Name":"mysql","Endpoints":[{"Name":"/sql_select"}]},{"Name":"redis","Endpoints":[{"Name":"/FindDriverIDs"},{"Name":"/GetDriver"}]}],"TestName":"baseline","TestDuration":30,"TestRunners":2,"Repeats":100,"SleepBetweenRequests":50}
+2025/09/30 17:22:31 started service instance ui-0 at http://127.0.0.1:35905
+2025/09/30 17:22:31 started service instance frontend-0 at http://127.0.0.1:46169
+2025/09/30 17:22:31 started service instance customer-0 at http://127.0.0.1:40599
+2025/09/30 17:22:31 started service instance driver-0 at http://127.0.0.1:37549
+2025/09/30 17:22:31 started service instance driver-1 at http://127.0.0.1:35597
+2025/09/30 17:22:31 started service instance route-0 at http://127.0.0.1:39949
+2025/09/30 17:22:31 started service instance route-1 at http://127.0.0.1:34693
+2025/09/30 17:22:31 started service instance route-2 at http://127.0.0.1:33383
+2025/09/30 17:22:31 started service instance mysql-0 at http://127.0.0.1:34375
+2025/09/30 17:22:31 started service instance redis-0 at http://127.0.0.1:36441
+2025/09/30 17:22:31 services started
+2025/09/30 17:22:34 started 2 test executors
+2025/09/30 17:22:34 running 100 repeat(s)
+2025/09/30 17:22:34 waiting for test executors to exit
+2025/09/30 17:23:11 stopped service instance ui
+2025/09/30 17:23:11 stopped service instance frontend
+2025/09/30 17:23:11 stopped service instance customer
+2025/09/30 17:23:11 stopped service instance driver
+2025/09/30 17:23:11 stopped service instance driver
+2025/09/30 17:23:11 stopped service instance route
+2025/09/30 17:23:11 stopped service instance route
+2025/09/30 17:23:11 stopped service instance route
+2025/09/30 17:23:11 stopped service instance mysql
+2025/09/30 17:23:11 stopped service instance redis

@@ -1,0 +1,51 @@
+validating endpoint/
+validating endpoint/dispatch
+validating endpoint/customer
+validating endpoint/FindNearest
+validating endpoint/GetShortestRoute
+validating endpoint/sql_select
+validating endpoint/FindDriverIDs
+validating endpoint/GetDriver
+{"Services":[{"Name":"ui","Endpoints":[{"Name":"/","Depends":{"Service":{"Name":"frontend","Endpoint":"/dispatch"}}}]},{"Name":"frontend","Endpoints":[{"Name":"/dispatch","Depends":{"Seq":[{"Service":{"Name":"customer","Endpoint":"/customer"}},{"Service":{"Name":"driver","Endpoint":"/FindNearest"}},{"Par":{"Items":[{"Service":{"Name":"route","Endpoint":"/GetShortestRoute"}},{"Service":{"Name":"route","Endpoint":"/GetShortestRoute"}},{"Service":{"Name":"route","Endpoint":"/GetShortestRoute"}},{"Service":{"Name":"route","Endpoint":"/GetShortestRoute"}},{"Service":{"Name":"route","Endpoint":"/GetShortestRoute"}},{"Service":{"Name":"route","Endpoint":"/GetShortestRoute"}},{"Service":{"Name":"route","Endpoint":"/GetShortestRoute"}},{"Service":{"Name":"route","Endpoint":"/GetShortestRoute"}},{"Service":{"Name":"route","Endpoint":"/GetShortestRoute"}},{"Service":{"Name":"route","Endpoint":"/GetShortestRoute"}}],"MaxPar":3}}]}}]},{"Name":"customer","Endpoints":[{"Name":"/customer","Depends":{"Seq":[{"Service":{"Name":"mysql"}}]}}]},{"Name":"driver","Endpoints":[{"Name":"/FindNearest","Depends":{"Seq":[{"Service":{"Name":"redis","Endpoint":"/FindDriverIDs"}},{"Service":{"Name":"redis","Endpoint":"/GetDriver"}},{"Service":{"Name":"redis","Endpoint":"/GetDriver"}},{"Service":{"Name":"redis","Endpoint":"/GetDriver"}},{"Service":{"Name":"redis","Endpoint":"/GetDriver"}},{"Service":{"Name":"redis","Endpoint":"/GetDriver"}},{"Service":{"Name":"redis","Endpoint":"/GetDriver"}},{"Service":{"Name":"redis","Endpoint":"/GetDriver"}},{"Service":{"Name":"redis","Endpoint":"/GetDriver"}},{"Service":{"Name":"redis","Endpoint":"/GetDriver"}},{"Service":{"Name":"redis","Endpoint":"/GetDriver"}}]}}],"Count":6},{"Name":"route","Endpoints":[{"Name":"/GetShortestRoute"}],"Count":8},{"Name":"mysql","Endpoints":[{"Name":"/sql_select"}]},{"Name":"redis","Endpoints":[{"Name":"/FindDriverIDs"},{"Name":"/GetDriver","Perf":{"Latency":null,"Failure":{"Probability":0.2,"Messages":["redis timeout","redis error"]}}}]}],"TestName":"scaling","TestDuration":45,"TestRunners":8,"Repeats":100,"SleepBetweenRequests":50}
+2025/09/30 17:37:37 started service instance ui-0 at http://127.0.0.1:42019
+2025/09/30 17:37:37 started service instance frontend-0 at http://127.0.0.1:43611
+2025/09/30 17:37:37 started service instance customer-0 at http://127.0.0.1:32909
+2025/09/30 17:37:37 started service instance driver-0 at http://127.0.0.1:43775
+2025/09/30 17:37:37 started service instance driver-1 at http://127.0.0.1:41681
+2025/09/30 17:37:37 started service instance driver-2 at http://127.0.0.1:36795
+2025/09/30 17:37:37 started service instance driver-3 at http://127.0.0.1:39039
+2025/09/30 17:37:37 started service instance driver-4 at http://127.0.0.1:40657
+2025/09/30 17:37:37 started service instance driver-5 at http://127.0.0.1:41649
+2025/09/30 17:37:37 started service instance route-0 at http://127.0.0.1:46833
+2025/09/30 17:37:37 started service instance route-1 at http://127.0.0.1:38729
+2025/09/30 17:37:37 started service instance route-2 at http://127.0.0.1:42369
+2025/09/30 17:37:37 started service instance route-3 at http://127.0.0.1:46755
+2025/09/30 17:37:37 started service instance route-4 at http://127.0.0.1:36903
+2025/09/30 17:37:37 started service instance route-5 at http://127.0.0.1:33739
+2025/09/30 17:37:37 started service instance route-6 at http://127.0.0.1:35045
+2025/09/30 17:37:37 started service instance route-7 at http://127.0.0.1:46067
+2025/09/30 17:37:37 started service instance mysql-0 at http://127.0.0.1:36085
+2025/09/30 17:37:37 started service instance redis-0 at http://127.0.0.1:38575
+2025/09/30 17:37:37 services started
+2025/09/30 17:37:40 started 8 test executors
+2025/09/30 17:37:40 running 100 repeat(s)
+2025/09/30 17:37:40 waiting for test executors to exit
+2025/09/30 17:38:00 stopped service instance ui
+2025/09/30 17:38:00 stopped service instance frontend
+2025/09/30 17:38:00 stopped service instance customer
+2025/09/30 17:38:00 stopped service instance driver
+2025/09/30 17:38:00 stopped service instance driver
+2025/09/30 17:38:00 stopped service instance driver
+2025/09/30 17:38:00 stopped service instance driver
+2025/09/30 17:38:00 stopped service instance driver
+2025/09/30 17:38:00 stopped service instance driver
+2025/09/30 17:38:00 stopped service instance route
+2025/09/30 17:38:00 stopped service instance route
+2025/09/30 17:38:00 stopped service instance route
+2025/09/30 17:38:00 stopped service instance route
+2025/09/30 17:38:00 stopped service instance route
+2025/09/30 17:38:00 stopped service instance route
+2025/09/30 17:38:00 stopped service instance route
+2025/09/30 17:38:00 stopped service instance route
+2025/09/30 17:38:00 stopped service instance mysql
+2025/09/30 17:38:00 stopped service instance redis
