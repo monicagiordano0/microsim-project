@@ -268,7 +268,7 @@ The workload configuration specifies how the system is stressed during a test. T
 
 # Test Scenarios
 
-Five main scenarios have been defined to evaluate the behavior of the microservices architecture under different conditions. Each scenario modifies the workload or service parameters to test specific aspects such as latency, concurrency, fault tolerance, and scaling.
+Four main scenarios have been defined to evaluate the behavior of the microservices architecture under different conditions. Each scenario modifies the workload or service parameters to test specific aspects such as latency, concurrency, fault tolerance, and scaling.
 
 | Scenario Name      | Duration (s) | Runners | Repeats | Sleep (ms) | Total Requests | QPS (approx) | Objective |
 |-------------------|-------------|---------|---------|------------|----------------|---------------|-----------|
